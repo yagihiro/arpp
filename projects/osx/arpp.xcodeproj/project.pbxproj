@@ -1,0 +1,334 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B6645641AD4083900207303 /* libSQLiteCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6645631AD4083900207303 /* libSQLiteCpp.a */; };
+		9B66456C1AD408A500207303 /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456A1AD408A500207303 /* connection.cpp */; };
+		9B66456D1AD408A500207303 /* status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456B1AD408A500207303 /* status.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9B6645581AD4055D00207303 /* libarpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libarpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B6645631AD4083900207303 /* libSQLiteCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSQLiteCpp.a; path = ../../vendor/SQLiteCpp/build/libSQLiteCpp.a; sourceTree = "<group>"; };
+		9B6645671AD4089B00207303 /* connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		9B6645681AD4089B00207303 /* status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = status.h; sourceTree = "<group>"; };
+		9B66456A1AD408A500207303 /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
+		9B66456B1AD408A500207303 /* status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = status.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B6645551AD4055D00207303 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B6645641AD4083900207303 /* libSQLiteCpp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B66454F1AD4055C00207303 = {
+			isa = PBXGroup;
+			children = (
+				9B6645651AD4089B00207303 /* include */,
+				9B6645691AD408A500207303 /* src */,
+				9B6645601AD406E500207303 /* vendor */,
+				9B6645591AD4055D00207303 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B6645591AD4055D00207303 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645581AD4055D00207303 /* libarpp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B6645601AD406E500207303 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645611AD406F000207303 /* SQLiteCpp */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		9B6645611AD406F000207303 /* SQLiteCpp */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645621AD406FB00207303 /* build */,
+			);
+			name = SQLiteCpp;
+			sourceTree = "<group>";
+		};
+		9B6645621AD406FB00207303 /* build */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645631AD4083900207303 /* libSQLiteCpp.a */,
+			);
+			name = build;
+			sourceTree = "<group>";
+		};
+		9B6645651AD4089B00207303 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645661AD4089B00207303 /* arpp */,
+			);
+			name = include;
+			path = ../../include;
+			sourceTree = "<group>";
+		};
+		9B6645661AD4089B00207303 /* arpp */ = {
+			isa = PBXGroup;
+			children = (
+				9B6645671AD4089B00207303 /* connection.h */,
+				9B6645681AD4089B00207303 /* status.h */,
+			);
+			path = arpp;
+			sourceTree = "<group>";
+		};
+		9B6645691AD408A500207303 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				9B66456A1AD408A500207303 /* connection.cpp */,
+				9B66456B1AD408A500207303 /* status.cpp */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9B6645561AD4055D00207303 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9B6645571AD4055D00207303 /* arpp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B66455C1AD4055D00207303 /* Build configuration list for PBXNativeTarget "arpp" */;
+			buildPhases = (
+				9B66455F1AD406B800207303 /* ShellScript */,
+				9B6645541AD4055D00207303 /* Sources */,
+				9B6645551AD4055D00207303 /* Frameworks */,
+				9B6645561AD4055D00207303 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = arpp;
+			productName = arpp;
+			productReference = 9B6645581AD4055D00207303 /* libarpp.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B6645501AD4055C00207303 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Hiroki Yagita";
+				TargetAttributes = {
+					9B6645571AD4055D00207303 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 9B6645531AD4055C00207303 /* Build configuration list for PBXProject "arpp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9B66454F1AD4055C00207303;
+			productRefGroup = 9B6645591AD4055D00207303 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B6645571AD4055D00207303 /* arpp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B66455F1AD406B800207303 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=$PATH:/usr/local/bin\ncd $PROJECT_DIR/../../vendor/SQLiteCpp\nsh build.sh";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B6645541AD4055D00207303 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B66456C1AD408A500207303 /* connection.cpp in Sources */,
+				9B66456D1AD408A500207303 /* status.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9B66455A1AD4055D00207303 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+					../../vendor/SQLiteCpp/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					../../vendor/SQLiteCpp/build,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9B66455B1AD4055D00207303 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+					../../vendor/SQLiteCpp/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					../../vendor/SQLiteCpp/build,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9B66455D1AD4055D00207303 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9B66455E1AD4055D00207303 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B6645531AD4055C00207303 /* Build configuration list for PBXProject "arpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B66455A1AD4055D00207303 /* Debug */,
+				9B66455B1AD4055D00207303 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B66455C1AD4055D00207303 /* Build configuration list for PBXNativeTarget "arpp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B66455D1AD4055D00207303 /* Debug */,
+				9B66455E1AD4055D00207303 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B6645501AD4055C00207303 /* Project object */;
+}
