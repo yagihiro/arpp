@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+.DS_Store
+xcuserdata
+xcshareddata
+*.xcworkspace
+!Gummy.xcworkspace
