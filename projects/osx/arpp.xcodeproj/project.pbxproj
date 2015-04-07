@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B23524B1AD44A6000840266 /* base.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B23524A1AD44A6000840266 /* base.h */; };
 		9B6645641AD4083900207303 /* libSQLiteCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6645631AD4083900207303 /* libSQLiteCpp.a */; };
 		9B66456C1AD408A500207303 /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456A1AD408A500207303 /* connection.cpp */; };
 		9B66456D1AD408A500207303 /* status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456B1AD408A500207303 /* status.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B23524A1AD44A6000840266 /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		9B6645581AD4055D00207303 /* libarpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libarpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6645631AD4083900207303 /* libSQLiteCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSQLiteCpp.a; path = ../../vendor/SQLiteCpp/build/libSQLiteCpp.a; sourceTree = "<group>"; };
 		9B6645671AD4089B00207303 /* connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		9B6645661AD4089B00207303 /* arpp */ = {
 			isa = PBXGroup;
 			children = (
+				9B23524A1AD44A6000840266 /* base.h */,
 				9B6645671AD4089B00207303 /* connection.h */,
 				9B6645681AD4089B00207303 /* status.h */,
 			);
@@ -110,6 +113,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B23524B1AD44A6000840266 /* base.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
