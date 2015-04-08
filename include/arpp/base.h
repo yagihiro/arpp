@@ -1,9 +1,10 @@
 #pragma once
 
 #include <string>
+#include "status.h"
 
 namespace arpp {
-
+/*
 class Base {
 public:
   
@@ -19,5 +20,5 @@ public:
   //last
   
 };
-
+*/
 }

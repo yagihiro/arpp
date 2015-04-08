@@ -6,7 +6,7 @@ namespace arpp {
   class Connection::Impl {
   public:
     Impl(const std::string &path) {
-      _db.reset(new SQLite::Database(path));
+      _db.reset(new SQLite::Database(path, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE));
     }
     
   private:
