@@ -12,6 +12,8 @@
 		9B66456C1AD408A500207303 /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456A1AD408A500207303 /* connection.cpp */; };
 		9B66456D1AD408A500207303 /* status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456B1AD408A500207303 /* status.cpp */; };
 		9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15A1AD4CC89005FA860 /* arpp.h */; };
+		9BD6F1601AD53A8B005FA860 /* migration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15F1AD53A8B005FA860 /* migration.h */; };
+		9BD6F1621AD53B36005FA860 /* schema.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F1611AD53B36005FA860 /* schema.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		9B66456A1AD408A500207303 /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
 		9B66456B1AD408A500207303 /* status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = status.cpp; sourceTree = "<group>"; };
 		9BD6F15A1AD4CC89005FA860 /* arpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arpp.h; sourceTree = "<group>"; };
+		9BD6F15F1AD53A8B005FA860 /* migration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = migration.h; sourceTree = "<group>"; };
+		9BD6F1611AD53B36005FA860 /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 				9BD6F15A1AD4CC89005FA860 /* arpp.h */,
 				9B23524A1AD44A6000840266 /* base.h */,
 				9B6645671AD4089B00207303 /* connection.h */,
+				9BD6F15F1AD53A8B005FA860 /* migration.h */,
+				9BD6F1611AD53B36005FA860 /* schema.h */,
 				9B6645681AD4089B00207303 /* status.h */,
 			);
 			path = arpp;
@@ -116,8 +122,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD6F1601AD53A8B005FA860 /* migration.h in Headers */,
 				9B23524B1AD44A6000840266 /* base.h in Headers */,
 				9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */,
+				9BD6F1621AD53B36005FA860 /* schema.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

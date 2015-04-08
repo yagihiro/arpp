@@ -4,8 +4,8 @@
 #include "status.h"
 
 namespace arpp {
-/*
 class Base {
+  /*
 public:
   
   Status save();
@@ -18,7 +18,7 @@ public:
   //where
   //first
   //last
+   */
   
 };
-*/
 }
