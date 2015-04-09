@@ -2,7 +2,7 @@
 
 namespace arpp {
   
-  Status Migration::migrate(std::shared_ptr<Connection> connection, const std::vector<Schema> &schemas) {
+  Status Migration::migrate(std::shared_ptr<Connection> connection, const std::vector<BasePointer> &bases) {
     return Status::ok();
   }
   
