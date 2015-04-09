@@ -15,14 +15,13 @@ namespace arpp {
     
   };
   
-  Status Connection::connect(const std::map<std::string, std::string> &options, Connection **outp) {
-    Connection *p = *outp;
-    
-    p = new Connection;
+  std::shared_ptr<Connection> Connection::connect(const std::map<std::string, std::string> &options, Status *status) {
+    std::shared_ptr<Connection> p = std::make_shared<Connection>();
     p->set_options(options);
-    return std::move(p->connect());
+    *status = p->connect();
+    return p;
   }
-  
+
   Connection::Connection() {
     
   }

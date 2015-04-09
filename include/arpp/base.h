@@ -1,10 +1,23 @@
 #pragma once
 
-#include <string>
+#include <memory>
+#include "schema.h"
 #include "status.h"
 
 namespace arpp {
 class Base {
+public:
+
+  Base();
+  
+  std::shared_ptr<Schema> schema() const;
+  
+  virtual void set_schema(std::shared_ptr<Schema> schema) = 0;
+
+private:
+  
+  std::shared_ptr<Schema> _schema;
+  
   /*
 public:
   

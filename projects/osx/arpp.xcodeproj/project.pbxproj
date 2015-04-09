@@ -14,6 +14,8 @@
 		9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15A1AD4CC89005FA860 /* arpp.h */; };
 		9BD6F1601AD53A8B005FA860 /* migration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15F1AD53A8B005FA860 /* migration.h */; };
 		9BD6F1621AD53B36005FA860 /* schema.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F1611AD53B36005FA860 /* schema.h */; };
+		9BD6F1641AD62091005FA860 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6F1631AD62091005FA860 /* base.cpp */; };
+		9BD6F1661AD6463C005FA860 /* migration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6F1651AD6463C005FA860 /* migration.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		9BD6F15A1AD4CC89005FA860 /* arpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arpp.h; sourceTree = "<group>"; };
 		9BD6F15F1AD53A8B005FA860 /* migration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = migration.h; sourceTree = "<group>"; };
 		9BD6F1611AD53B36005FA860 /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
+		9BD6F1631AD62091005FA860 /* base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
+		9BD6F1651AD6463C005FA860 /* migration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = migration.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,9 @@
 		9B6645691AD408A500207303 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				9BD6F1631AD62091005FA860 /* base.cpp */,
 				9B66456A1AD408A500207303 /* connection.cpp */,
+				9BD6F1651AD6463C005FA860 /* migration.cpp */,
 				9B66456B1AD408A500207303 /* status.cpp */,
 			);
 			name = src;
@@ -203,8 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BD6F1661AD6463C005FA860 /* migration.cpp in Sources */,
 				9B66456C1AD408A500207303 /* connection.cpp in Sources */,
 				9B66456D1AD408A500207303 /* status.cpp in Sources */,
+				9BD6F1641AD62091005FA860 /* base.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
