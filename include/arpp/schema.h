@@ -1,10 +1,9 @@
 #pragma once
 
 namespace arpp {
-  
-  class Schema {
-  public:
-    Schema() {}
-  };
 
+class Schema {
+ public:
+  Schema() {}
+};
 }

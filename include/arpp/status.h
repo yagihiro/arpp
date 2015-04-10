@@ -5,7 +5,7 @@
 namespace arpp {
 
 class Status {
-public:
+ public:
   Status();
   static Status ok(const std::string &msg = "");
   static Status not_found(const std::string &msg = "");
@@ -14,7 +14,7 @@ public:
 
   inline bool is_not_found() const { return _code == kNotFound; }
 
-private:
+ private:
   enum Code {
     kOk = 0,
     kNotFound = 1,

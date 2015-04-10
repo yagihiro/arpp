@@ -7,11 +7,12 @@
 #include "status.h"
 
 namespace arpp {
-  
-  class Migration {
-  public:
-    typedef std::shared_ptr<Base> BasePointer;
-    
-    static Status migrate(std::shared_ptr<Connection> connection, const std::vector<BasePointer> &bases);
-  };
+
+class Migration {
+ public:
+  typedef std::shared_ptr<Base> BasePointer;
+
+  static Status migrate(std::shared_ptr<Connection> connection,
+                        const std::vector<BasePointer> &bases);
+};
 }

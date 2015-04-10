@@ -8,12 +8,13 @@
 namespace arpp {
 
 class Connection {
-public:
-  static std::shared_ptr<Connection> connect(const std::map<std::string, std::string> &options, Status *status);
+ public:
+  static std::shared_ptr<Connection> connect(
+      const std::map<std::string, std::string> &options, Status *status);
 
   Connection();
 
-private:
+ private:
   void set_options(const std::map<std::string, std::string> &options);
   Status connect();
 

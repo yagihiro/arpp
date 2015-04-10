@@ -6,25 +6,23 @@
 
 namespace arpp {
 class Base {
-public:
-
+ public:
   Base();
-  
+
   std::shared_ptr<Schema> schema() const;
-  
+
   virtual void set_schema(std::shared_ptr<Schema> schema) = 0;
 
-private:
-  
+ private:
   std::shared_ptr<Schema> _schema;
-  
+
   /*
 public:
-  
+
   Status save();
   Status destroy();
   Status update();
-  
+
   //find
   //limit
   //order
@@ -32,6 +30,5 @@ public:
   //first
   //last
    */
-  
 };
 }
