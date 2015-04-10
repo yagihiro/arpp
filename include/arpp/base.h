@@ -1,6 +1,8 @@
 #pragma once
 
 #include <memory>
+#include <string>
+#include "connection.h"
 #include "schema.h"
 #include "status.h"
 
@@ -10,8 +12,12 @@ class Base {
   Base();
 
   std::shared_ptr<Schema> schema() const;
+  std::string table_name() const;
 
-  virtual void set_schema(std::shared_ptr<Schema> schema) = 0;
+  virtual void migrate(std::shared_ptr<Connection> connection);
+
+ protected:
+  std::string _table_name;
 
  private:
   std::shared_ptr<Schema> _schema;

@@ -9,15 +9,17 @@ class Status {
   Status();
   static Status ok(const std::string &msg = "");
   static Status not_found(const std::string &msg = "");
+  static Status invalid_argument(const std::string &msg = "");
 
   inline bool is_ok() const { return _code == kOk; }
-
   inline bool is_not_found() const { return _code == kNotFound; }
+  inline bool is_invalid_argument() const { return _code == kInvalidArgument; }
 
  private:
   enum Code {
     kOk = 0,
     kNotFound = 1,
+    kInvalidArgument = 2,
   };
 
   Code _code = kOk;

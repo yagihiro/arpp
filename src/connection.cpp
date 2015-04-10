@@ -10,9 +10,31 @@ class Connection::Impl {
         new SQLite::Database(path, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE));
   }
 
+  bool exists_table(const std::string &table_name) const {
+    return _db->tableExists(table_name);
+  }
+
+  Status execute_sql(const std::string &sql) {
+    _db->exec(sql);
+    return Status::ok();
+  }
+
+  Status transaction(const std::function<Status()> &t) {
+    if (t == nullptr) return Status::invalid_argument();
+
+    SQLite::Transaction transaction(*_db);
+    auto status = t();
+    if (status.is_ok()) transaction.commit();
+
+    return Status::ok();
+  }
+
  private:
   std::unique_ptr<SQLite::Database> _db;
 };
+
+const std::string Connection::kOptionAdapter = "adapter";
+const std::string Connection::kOptionDatabase = "database";
 
 std::shared_ptr<Connection> Connection::connect(
     const std::map<std::string, std::string> &options, Status *status) {
@@ -23,6 +45,22 @@ std::shared_ptr<Connection> Connection::connect(
 }
 
 Connection::Connection() {}
+
+const std::map<std::string, std::string> &Connection::options() const {
+  return std::move(_options);
+}
+
+bool Connection::exists_table(const std::string &table_name) const {
+  return _impl->exists_table(table_name);
+}
+
+Status Connection::execute_sql(const std::string &sql) {
+  return _impl->execute_sql(sql);
+}
+
+Status Connection::transaction(const std::function<Status()> &t) {
+  return _impl->transaction(t);
+}
 
 void Connection::set_options(
     const std::map<std::string, std::string> &options) {
