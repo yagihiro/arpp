@@ -16,8 +16,11 @@ class Base {
 
   virtual void migrate(std::shared_ptr<Connection> connection);
 
+  std::string &operator[](const std::string &key) {}
+
  protected:
   std::string _table_name;
+  std::map<std::string, std::string> _value;
 
  private:
   std::shared_ptr<Schema> _schema;
