@@ -1,4 +1,5 @@
 #include <SQLiteCpp/SQLiteCpp.h>
+#include <format.h>
 #include "connection.h"
 
 namespace arpp {
@@ -15,6 +16,7 @@ class Connection::Impl {
   }
 
   Status execute_sql(const std::string &sql) {
+    fmt::print("SQL: {}\n", sql);
     _db->exec(sql);
     return Status::ok();
   }

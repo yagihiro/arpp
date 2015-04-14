@@ -8,30 +8,35 @@
 
 namespace arpp {
 class Base {
-public:
+ public:
   Base();
 
   std::shared_ptr<Schema> schema() const;
   std::string table_name() const;
 
   virtual void migrate(std::shared_ptr<Connection> connection);
+  virtual void define_schema(std::shared_ptr<Schema> schema);
 
   std::string &operator[](const std::string &key) { return _fields.at(key); }
   const std::string &operator[](const std::string &key) const {
     return _fields.at(key);
   }
 
-protected:
-  std::string _table_name;
+  void connect(std::shared_ptr<Connection> connection);
 
-private:
+  Status save();
+
+ private:
   std::shared_ptr<Schema> _schema;
   std::map<std::string, std::string> _fields;
+  std::shared_ptr<Connection> _connection;
+  bool _new_record = true;
+
+  void setup_fields();
 
   /*
 public:
 
-  Status save();
   Status destroy();
   Status update();
 

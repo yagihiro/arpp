@@ -16,6 +16,10 @@ Status Status::invalid_argument(const std::string &msg) {
   return std::move(Status(kInvalidArgument, msg));
 }
 
+Status Status::status_ailment(const std::string &msg) {
+  return std::move(Status(kStatusAilment, msg));
+}
+
 Status::Status(Code code, const std::string &msg)
     : _code(code), _message(msg) {}
 }

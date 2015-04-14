@@ -11,6 +11,9 @@
 		9B6645641AD4083900207303 /* libSQLiteCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B6645631AD4083900207303 /* libSQLiteCpp.a */; };
 		9B66456C1AD408A500207303 /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456A1AD408A500207303 /* connection.cpp */; };
 		9B66456D1AD408A500207303 /* status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B66456B1AD408A500207303 /* status.cpp */; };
+		9B6B6CF21ADD2F29004DFE19 /* format.cc in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B6CF01ADD2F29004DFE19 /* format.cc */; };
+		9B6B6CF31ADD2F29004DFE19 /* format.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6B6CF11ADD2F29004DFE19 /* format.h */; };
+		9B6B6CF51ADD34A5004DFE19 /* schema.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B6CF41ADD34A5004DFE19 /* schema.cpp */; };
 		9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15A1AD4CC89005FA860 /* arpp.h */; };
 		9BD6F1601AD53A8B005FA860 /* migration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15F1AD53A8B005FA860 /* migration.h */; };
 		9BD6F1621AD53B36005FA860 /* schema.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F1611AD53B36005FA860 /* schema.h */; };
@@ -26,6 +29,9 @@
 		9B6645681AD4089B00207303 /* status.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = status.h; sourceTree = "<group>"; };
 		9B66456A1AD408A500207303 /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
 		9B66456B1AD408A500207303 /* status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = status.cpp; sourceTree = "<group>"; };
+		9B6B6CF01ADD2F29004DFE19 /* format.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = format.cc; path = ../../vendor/cppformat/format.cc; sourceTree = "<group>"; };
+		9B6B6CF11ADD2F29004DFE19 /* format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = format.h; path = ../../vendor/cppformat/format.h; sourceTree = "<group>"; };
+		9B6B6CF41ADD34A5004DFE19 /* schema.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema.cpp; sourceTree = "<group>"; };
 		9BD6F15A1AD4CC89005FA860 /* arpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arpp.h; sourceTree = "<group>"; };
 		9BD6F15F1AD53A8B005FA860 /* migration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = migration.h; sourceTree = "<group>"; };
 		9BD6F1611AD53B36005FA860 /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
@@ -66,6 +72,7 @@
 		9B6645601AD406E500207303 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9B6B6CEF1ADD2F17004DFE19 /* cppformat */,
 				9B6645611AD406F000207303 /* SQLiteCpp */,
 			);
 			name = vendor;
@@ -115,10 +122,20 @@
 				9BD6F1631AD62091005FA860 /* base.cpp */,
 				9B66456A1AD408A500207303 /* connection.cpp */,
 				9BD6F1651AD6463C005FA860 /* migration.cpp */,
+				9B6B6CF41ADD34A5004DFE19 /* schema.cpp */,
 				9B66456B1AD408A500207303 /* status.cpp */,
 			);
 			name = src;
 			path = ../../src;
+			sourceTree = "<group>";
+		};
+		9B6B6CEF1ADD2F17004DFE19 /* cppformat */ = {
+			isa = PBXGroup;
+			children = (
+				9B6B6CF01ADD2F29004DFE19 /* format.cc */,
+				9B6B6CF11ADD2F29004DFE19 /* format.h */,
+			);
+			name = cppformat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +145,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6B6CF31ADD2F29004DFE19 /* format.h in Headers */,
 				9BD6F1601AD53A8B005FA860 /* migration.h in Headers */,
 				9B23524B1AD44A6000840266 /* base.h in Headers */,
 				9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */,
@@ -211,6 +229,8 @@
 			files = (
 				9BD6F1661AD6463C005FA860 /* migration.cpp in Sources */,
 				9B66456C1AD408A500207303 /* connection.cpp in Sources */,
+				9B6B6CF51ADD34A5004DFE19 /* schema.cpp in Sources */,
+				9B6B6CF21ADD2F29004DFE19 /* format.cc in Sources */,
 				9B66456D1AD408A500207303 /* status.cpp in Sources */,
 				9BD6F1641AD62091005FA860 /* base.cpp in Sources */,
 			);
@@ -257,6 +277,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 					../../vendor/SQLiteCpp/include,
+					../../vendor/cppformat,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -302,6 +323,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 					../../vendor/SQLiteCpp/include,
+					../../vendor/cppformat,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
