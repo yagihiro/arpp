@@ -19,7 +19,16 @@ class Base {
 
   std::string &operator[](const std::string &key) { return _fields.at(key); }
   const std::string &operator[](const std::string &key) const {
+    return get_field(key);
+  }
+  const std::string &get_field(const std::string &key) const {
     return _fields.at(key);
+  }
+  void set_field(const std::string &key, const std::string &value) {
+    _fields[key] = value;
+  }
+  void set_field(const std::pair<std::string, std::string> &pair) {
+    set_field(pair.first, pair.second);
   }
 
   void connect(std::shared_ptr<Connection> connection);

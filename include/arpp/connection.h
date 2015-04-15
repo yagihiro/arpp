@@ -15,11 +15,19 @@ class Connection {
   static std::shared_ptr<Connection> connect(
       const std::map<std::string, std::string> &options, Status *status);
 
+  static std::shared_ptr<Connection> shared_connection();
+
+  static bool has_connected();
+
   Connection();
 
   const std::map<std::string, std::string> &options() const;
   bool exists_table(const std::string &table_name) const;
   Status execute_sql(const std::string &sql);
+
+  typedef std::map<std::string, std::string> RowType;
+  Status execute_sql_for_each(const std::string &sql,
+                              const std::function<void(const RowType &)> &fn);
   Status transaction(const std::function<Status()> &t);
 
  private:

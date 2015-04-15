@@ -21,6 +21,31 @@ class Connection::Impl {
     return Status::ok();
   }
 
+  Status execute_sql_for_each(
+      const std::string &sql,
+      const std::function<void(const Connection::RowType &)> &fn) {
+    if (fn == nullptr) {
+      return Status::status_ailment();
+    }
+
+    fmt::print("SQL: {}\n", sql);
+
+    SQLite::Statement query(*_db, sql);
+    while (query.executeStep()) {
+      Connection::RowType row;
+      auto count = query.getColumnCount();
+      for (int i = 0; i < count; i++) {
+        auto column = query.getColumn(i);
+        auto t = column.getText();
+        std::string value = (t) ? t : "";
+        row.emplace(std::make_pair(column.getName(), value));
+      }
+      fn(row);
+    }
+
+    return Status::ok();
+  }
+
   Status transaction(const std::function<Status()> &t) {
     if (t == nullptr) return Status::invalid_argument();
 
@@ -38,13 +63,25 @@ class Connection::Impl {
 const std::string Connection::kOptionAdapter = "adapter";
 const std::string Connection::kOptionDatabase = "database";
 
+static std::shared_ptr<Connection> _shared_connection;
+
 std::shared_ptr<Connection> Connection::connect(
     const std::map<std::string, std::string> &options, Status *status) {
-  std::shared_ptr<Connection> p = std::make_shared<Connection>();
-  p->set_options(options);
-  *status = p->connect();
-  return p;
+  if (_shared_connection == nullptr) {
+    std::shared_ptr<Connection> p = std::make_shared<Connection>();
+    p->set_options(options);
+    *status = p->connect();
+    _shared_connection = p;
+  }
+
+  return _shared_connection;
 }
+
+std::shared_ptr<Connection> Connection::shared_connection() {
+  return _shared_connection;
+}
+
+bool Connection::has_connected() { return _shared_connection != nullptr; }
 
 Connection::Connection() {}
 
@@ -58,6 +95,11 @@ bool Connection::exists_table(const std::string &table_name) const {
 
 Status Connection::execute_sql(const std::string &sql) {
   return _impl->execute_sql(sql);
+}
+
+Status Connection::execute_sql_for_each(
+    const std::string &sql, const std::function<void(const RowType &)> &fn) {
+  return _impl->execute_sql_for_each(sql, fn);
 }
 
 Status Connection::transaction(const std::function<Status()> &t) {
