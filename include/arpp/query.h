@@ -16,12 +16,12 @@ template <typename Model>
 class Project {
  public:
   using ModelPtr = std::shared_ptr<Model>;
+  using ProjectType = Project<Model>;
+  using ProjectPtr = std::shared_ptr<ProjectType>;
 
   enum class Type { kWhere, kOrder, kLimit };
 
-  Project(Type type, const std::string &exp) {
-    _conditions.insert(std::make_pair(type, exp));
-  }
+  Project(Type type, const std::string &exp) { add_condition(type, exp); }
 
   std::vector<ModelPtr> load() {
     if (!Connection::has_connected()) {
@@ -57,8 +57,19 @@ class Project {
     return std::move(models);
   }
 
+  ProjectPtr limit(int n) {
+    auto q = fmt::format("{}", n);
+    auto new_project = std::make_shared<ProjectType>(*this);
+    new_project->add_condition(Type::kLimit, q);
+    return new_project;
+  }
+
  private:
   std::map<Type, std::string> _conditions;
+
+  void add_condition(Type type, const std::string &exp) {
+    _conditions.insert(std::make_pair(type, exp));
+  }
 };
 
 template <typename Model>
