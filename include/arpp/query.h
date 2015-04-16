@@ -11,48 +11,27 @@ class Query {
   typedef std::shared_ptr<Model> ModelPtr;
 
   static ModelPtr first() {
-    if (!Connection::has_connected()) {
-      return nullptr;
-    }
-
-    auto m = std::make_shared<Model>();
-    m->connect(Connection::shared_connection());
-
-    fmt::MemoryWriter buf;
-    buf << "SELECT * FROM " << m->table_name() << " ORDER BY id ASC LIMIT 1;";
-
-    auto c = Connection::shared_connection();
-    c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
-      for (auto one : row) {
-        m->set_field(one);
-      }
+    return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
+      mw << "SELECT * FROM " << m->table_name() << " ORDER BY id ASC LIMIT 1;";
     });
-
-    return m;
   }
 
   static ModelPtr last() {
-    if (!Connection::has_connected()) {
-      return nullptr;
-    }
-
-    auto m = std::make_shared<Model>();
-    m->connect(Connection::shared_connection());
-
-    fmt::MemoryWriter buf;
-    buf << "SELECT * FROM " << m->table_name() << " ORDER BY id DESC LIMIT 1;";
-
-    auto c = Connection::shared_connection();
-    c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
-      for (auto one : row) {
-        m->set_field(one);
-      }
+    return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
+      mw << "SELECT * FROM " << m->table_name() << " ORDER BY id DESC LIMIT 1;";
     });
-
-    return m;
   }
 
   static ModelPtr find(int id) {
+    return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
+      mw << "SELECT * FROM " << m->table_name() << " WHERE id = " << id
+         << " LIMIT 1;";
+    });
+  }
+
+ private:
+  static ModelPtr _exec_single(
+      const std::function<void(ModelPtr, fmt::MemoryWriter &)> &fn) {
     if (!Connection::has_connected()) {
       return nullptr;
     }
@@ -61,8 +40,7 @@ class Query {
     m->connect(Connection::shared_connection());
 
     fmt::MemoryWriter buf;
-    buf << "SELECT * FROM " << m->table_name() << " WHERE id = " << id
-        << " LIMIT 1;";
+    fn(m, buf);
 
     auto c = Connection::shared_connection();
     c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
