@@ -51,5 +51,27 @@ class Query {
 
     return m;
   }
+
+  static ModelPtr find(int id) {
+    if (!Connection::has_connected()) {
+      return nullptr;
+    }
+
+    auto m = std::make_shared<Model>();
+    m->connect(Connection::shared_connection());
+
+    fmt::MemoryWriter buf;
+    buf << "SELECT * FROM " << m->table_name() << " WHERE id = " << id
+        << " LIMIT 1;";
+
+    auto c = Connection::shared_connection();
+    c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
+      for (auto one : row) {
+        m->set_field(one);
+      }
+    });
+
+    return m;
+  }
 };
 }

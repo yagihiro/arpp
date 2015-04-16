@@ -49,12 +49,9 @@ public:
   Status destroy();
   Status update();
 
-  //find
   //limit
   //order
   //where
-  //first
-  //last
    */
 };
 }
