@@ -3,13 +3,14 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <type_traits>
 #include "connection.h"
 
 namespace arpp {
 
 enum class Order {
-  kAsc,
-  kDesc,
+  kAsc = 0,
+  kDesc = 1,
 };
 
 template <typename Model>
@@ -61,6 +62,15 @@ class Project {
     auto q = fmt::format("{}", n);
     auto new_project = std::make_shared<ProjectType>(*this);
     new_project->add_condition(Type::kLimit, q);
+    return new_project;
+  }
+
+  ProjectPtr order(const std::string &column, Order o) {
+    static std::string order_str[2] = {"ASC", "DESC"};
+    auto oi = static_cast<int>(o);
+    auto new_project = std::make_shared<ProjectType>(*this);
+    std::string cond = fmt::format("{} {}", column, order_str[oi]);
+    new_project->add_condition(Type::kOrder, cond);
     return new_project;
   }
 
