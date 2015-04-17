@@ -10,6 +10,7 @@ namespace arpp {
 class Base {
  public:
   Base();
+  virtual ~Base() = default;
 
   std::shared_ptr<Schema> schema() const;
   std::string table_name() const;
