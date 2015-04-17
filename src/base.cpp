@@ -63,6 +63,26 @@ Status Base::save() {
   return Status::ok();
 }
 
+Status Base::destroy() {
+  if (_connection == nullptr) {
+    return Status::status_ailment();
+  }
+
+  std::string id;
+  try {
+    id = _fields.at("id");
+  } catch (std::out_of_range &e) {
+    return Status::status_ailment();
+  }
+
+  fmt::MemoryWriter buf;
+  buf << "DELETE FROM " << table_name() << " WHERE id = " << id;
+
+  _connection->execute_sql(buf.str());
+
+  return Status::ok();
+}
+
 void Base::setup_fields() {
   _schema->each_column([&](const std::string &column_name) {
     _fields.emplace(std::make_pair(column_name, ""));

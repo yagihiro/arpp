@@ -35,6 +35,7 @@ class Base {
   void connect(std::shared_ptr<Connection> connection);
 
   Status save();
+  Status destroy();
 
  private:
   std::shared_ptr<Schema> _schema;
@@ -47,12 +48,8 @@ class Base {
   /*
 public:
 
-  Status destroy();
   Status update();
 
-  //limit
-  //order
-  //where
    */
 };
 }
