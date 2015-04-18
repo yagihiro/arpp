@@ -20,13 +20,16 @@ void Base::connect(std::shared_ptr<Connection> connection) {
   setup_fields();
 }
 
+void Base::loaded() { _new_record = false; }
+
 Status Base::save() {
   if (_connection == nullptr) {
     return Status::status_ailment();
   }
 
+  fmt::MemoryWriter buf;
+
   if (_new_record) {
-    fmt::MemoryWriter buf;
     buf << "INSERT INTO " << table_name() << " (";
 
     std::vector<std::tuple<std::string, std::string> > values;
@@ -56,9 +59,25 @@ Status Base::save() {
     }
 
     buf << ");";
+  } else {
+    buf << "UPDATE " << table_name() << " SET ";
 
-    _connection->execute_sql(buf.str());
+    auto size = _fields.size();
+    for (auto &one : _fields) {
+      size -= 1;
+
+      if (one.first == "id") continue;
+
+      buf << one.first << " = '" << one.second << "'";
+      if (0 < size) {
+        buf << ", ";
+      }
+    }
+
+    buf << " WHERE id = " << _fields["id"];
   }
+
+  _connection->execute_sql(buf.str());
 
   return Status::ok();
 }

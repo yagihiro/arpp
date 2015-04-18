@@ -52,6 +52,7 @@ class Project {
       for (auto one : row) {
         m->set_field(one);
       }
+      m->loaded();
       models.emplace_back(m);
     });
 
@@ -134,6 +135,8 @@ class Query {
         m->set_field(one);
       }
     });
+
+    m->loaded();
 
     return m;
   }

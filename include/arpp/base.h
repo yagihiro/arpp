@@ -34,6 +34,8 @@ class Base {
 
   void connect(std::shared_ptr<Connection> connection);
 
+  void loaded();
+
   Status save();
   Status destroy();
 
@@ -44,12 +46,5 @@ class Base {
   bool _new_record = true;
 
   void setup_fields();
-
-  /*
-public:
-
-  Status update();
-
-   */
 };
 }
