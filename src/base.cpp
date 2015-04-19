@@ -8,7 +8,8 @@ Base::Base() { _schema = std::make_shared<Schema>(); }
 std::shared_ptr<Schema> Base::schema() const { return _schema; }
 std::string Base::table_name() const { return _schema->table_name(); }
 
-void Base::migrate(std::shared_ptr<Connection> connection) {}
+void Base::migrate(std::shared_ptr<Connection> connection,
+                   std::shared_ptr<Schema> schema) {}
 void Base::define_schema(std::shared_ptr<Schema> schema) {}
 
 void Base::connect(std::shared_ptr<Connection> connection) {

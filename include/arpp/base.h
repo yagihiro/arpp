@@ -15,7 +15,8 @@ class Base {
   std::shared_ptr<Schema> schema() const;
   std::string table_name() const;
 
-  virtual void migrate(std::shared_ptr<Connection> connection);
+  virtual void migrate(std::shared_ptr<Connection> connection,
+                       std::shared_ptr<Schema> schema);
   virtual void define_schema(std::shared_ptr<Schema> schema);
 
   std::string &operator[](const std::string &key) { return _fields.at(key); }
