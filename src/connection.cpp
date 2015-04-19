@@ -46,6 +46,10 @@ class Connection::Impl {
     return Status::ok();
   }
 
+  Status drop_table(const std::string &table_name) {
+    return execute_sql(fmt::format("DROP TABLE {}", table_name));
+  }
+
   Status transaction(const std::function<Status()> &t) {
     if (t == nullptr) return Status::invalid_argument();
 
@@ -100,6 +104,10 @@ Status Connection::execute_sql(const std::string &sql) {
 Status Connection::execute_sql_for_each(
     const std::string &sql, const std::function<void(const RowType &)> &fn) {
   return _impl->execute_sql_for_each(sql, fn);
+}
+
+Status Connection::drop_table(const std::string &table_name) {
+  return _impl->drop_table(table_name);
 }
 
 Status Connection::transaction(const std::function<Status()> &t) {

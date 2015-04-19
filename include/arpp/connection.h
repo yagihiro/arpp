@@ -24,10 +24,10 @@ class Connection {
   const std::map<std::string, std::string> &options() const;
   bool exists_table(const std::string &table_name) const;
   Status execute_sql(const std::string &sql);
-
   typedef std::map<std::string, std::string> RowType;
   Status execute_sql_for_each(const std::string &sql,
                               const std::function<void(const RowType &)> &fn);
+  Status drop_table(const std::string &table_name);
   Status transaction(const std::function<Status()> &t);
 
  private:
