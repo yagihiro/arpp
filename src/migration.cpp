@@ -8,7 +8,6 @@ Status Migration::migrate(std::shared_ptr<Connection> connection,
   auto database = options["database"];
 
   for (auto &base : bases) {
-    base->connect(connection);
     base->migrate(connection, base->schema());
   }
 

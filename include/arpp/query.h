@@ -5,6 +5,7 @@
 #include <string>
 #include <type_traits>
 #include "connection.h"
+#include "model.h"
 
 namespace arpp {
 
@@ -29,8 +30,7 @@ class Project {
       return std::move(std::vector<ModelPtr>());
     }
 
-    auto for_schema = std::make_shared<T>();
-    for_schema->connect(Connection::shared_connection());
+    auto for_schema = Model<T>::create();
 
     fmt::MemoryWriter buf;
     buf << "SELECT * FROM " << for_schema->table_name();
@@ -47,8 +47,7 @@ class Project {
     std::vector<ModelPtr> models;
     auto c = Connection::shared_connection();
     c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
-      auto m = std::make_shared<T>();
-      m->connect(Connection::shared_connection());
+      auto m = Model<T>::create();
       for (auto one : row) {
         m->set_field(one);
       }
@@ -123,8 +122,7 @@ class Query {
       return nullptr;
     }
 
-    auto m = std::make_shared<T>();
-    m->connect(Connection::shared_connection());
+    auto m = Model<T>::create();
 
     fmt::MemoryWriter buf;
     fn(m, buf);
