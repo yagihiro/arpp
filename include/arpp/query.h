@@ -13,11 +13,11 @@ enum class Order {
   kDesc = 1,
 };
 
-template <typename Model>
+template <typename T>
 class Project {
  public:
-  using ModelPtr = std::shared_ptr<Model>;
-  using ProjectType = Project<Model>;
+  using ModelPtr = std::shared_ptr<T>;
+  using ProjectType = Project<T>;
   using ProjectPtr = std::shared_ptr<ProjectType>;
 
   enum class Type { kWhere, kOrder, kLimit };
@@ -29,7 +29,7 @@ class Project {
       return std::move(std::vector<ModelPtr>());
     }
 
-    auto for_schema = std::make_shared<Model>();
+    auto for_schema = std::make_shared<T>();
     for_schema->connect(Connection::shared_connection());
 
     fmt::MemoryWriter buf;
@@ -47,7 +47,7 @@ class Project {
     std::vector<ModelPtr> models;
     auto c = Connection::shared_connection();
     c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
-      auto m = std::make_shared<Model>();
+      auto m = std::make_shared<T>();
       m->connect(Connection::shared_connection());
       for (auto one : row) {
         m->set_field(one);
@@ -83,11 +83,11 @@ class Project {
   }
 };
 
-template <typename Model>
+template <typename T>
 class Query {
  public:
-  using ModelPtr = std::shared_ptr<Model>;
-  using ProjectType = Project<Model>;
+  using ModelPtr = std::shared_ptr<T>;
+  using ProjectType = Project<T>;
   using ProjectPtr = std::shared_ptr<ProjectType>;
 
   static ModelPtr first() {
@@ -123,7 +123,7 @@ class Query {
       return nullptr;
     }
 
-    auto m = std::make_shared<Model>();
+    auto m = std::make_shared<T>();
     m->connect(Connection::shared_connection());
 
     fmt::MemoryWriter buf;
