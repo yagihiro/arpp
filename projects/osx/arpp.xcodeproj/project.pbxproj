@@ -15,6 +15,7 @@
 		9B6B6CF31ADD2F29004DFE19 /* format.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6B6CF11ADD2F29004DFE19 /* format.h */; };
 		9B6B6CF51ADD34A5004DFE19 /* schema.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B6CF41ADD34A5004DFE19 /* schema.cpp */; };
 		9B6B6CF71ADE41B9004DFE19 /* query.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B6B6CF61ADE41B9004DFE19 /* query.h */; };
+		9BD184261AE517EB009C17A6 /* model.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD184251AE517EB009C17A6 /* model.h */; };
 		9BD6F15B1AD4CC89005FA860 /* arpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15A1AD4CC89005FA860 /* arpp.h */; };
 		9BD6F1601AD53A8B005FA860 /* migration.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F15F1AD53A8B005FA860 /* migration.h */; };
 		9BD6F1621AD53B36005FA860 /* schema.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BD6F1611AD53B36005FA860 /* schema.h */; };
@@ -34,6 +35,7 @@
 		9B6B6CF11ADD2F29004DFE19 /* format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = format.h; path = ../../vendor/cppformat/format.h; sourceTree = "<group>"; };
 		9B6B6CF41ADD34A5004DFE19 /* schema.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema.cpp; sourceTree = "<group>"; };
 		9B6B6CF61ADE41B9004DFE19 /* query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = query.h; sourceTree = "<group>"; };
+		9BD184251AE517EB009C17A6 /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
 		9BD6F15A1AD4CC89005FA860 /* arpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = arpp.h; sourceTree = "<group>"; };
 		9BD6F15F1AD53A8B005FA860 /* migration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = migration.h; sourceTree = "<group>"; };
 		9BD6F1611AD53B36005FA860 /* schema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = schema.h; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				9B23524A1AD44A6000840266 /* base.h */,
 				9B6645671AD4089B00207303 /* connection.h */,
 				9BD6F15F1AD53A8B005FA860 /* migration.h */,
+				9BD184251AE517EB009C17A6 /* model.h */,
 				9B6B6CF61ADE41B9004DFE19 /* query.h */,
 				9BD6F1611AD53B36005FA860 /* schema.h */,
 				9B6645681AD4089B00207303 /* status.h */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6B6CF31ADD2F29004DFE19 /* format.h in Headers */,
+				9BD184261AE517EB009C17A6 /* model.h in Headers */,
 				9BD6F1601AD53A8B005FA860 /* migration.h in Headers */,
 				9B23524B1AD44A6000840266 /* base.h in Headers */,
 				9B6B6CF71ADE41B9004DFE19 /* query.h in Headers */,
