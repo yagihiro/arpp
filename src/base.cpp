@@ -15,6 +15,8 @@ void Base::define_schema(std::shared_ptr<Schema> schema) {}
 void Base::connect(std::shared_ptr<Connection> connection) {
   _connection = connection;
 
+  _schema->define_column("id", "INTEGER PRIMARY KEY AUTOINCREMENT");
+
   // expect override
   define_schema(_schema);
 
@@ -36,6 +38,7 @@ Status Base::save() {
     std::vector<std::tuple<std::string, std::string> > values;
 
     for (auto &one : _fields) {
+      if (one.first == "id") continue;
       values.push_back(std::make_tuple(one.first, one.second));
     }
 

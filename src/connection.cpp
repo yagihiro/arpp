@@ -50,6 +50,26 @@ class Connection::Impl {
     return execute_sql(fmt::format("DROP TABLE {}", table_name));
   }
 
+  Status create_table(std::shared_ptr<Schema> schema) {
+    fmt::MemoryWriter buf;
+
+    buf << "CREATE TABLE " << schema->table_name() << " (";
+
+    auto size = schema->defined_column_size();
+    schema->each_define([&](const Schema::ColumnType &def) {
+      size -= 1;
+      buf << " " << std::get<Schema::kColumnName>(def) << " "
+          << std::get<Schema::kColumnType>(def);
+      if (0 < size) {
+        buf << ", ";
+      }
+    });
+
+    buf << ")";
+
+    return execute_sql(buf.str());
+  }
+
   Status transaction(const std::function<Status()> &t) {
     if (t == nullptr) return Status::invalid_argument();
 
@@ -108,6 +128,10 @@ Status Connection::execute_sql_for_each(
 
 Status Connection::drop_table(const std::string &table_name) {
   return _impl->drop_table(table_name);
+}
+
+Status Connection::create_table(std::shared_ptr<Schema> schema) {
+  return _impl->create_table(schema);
 }
 
 Status Connection::transaction(const std::function<Status()> &t) {

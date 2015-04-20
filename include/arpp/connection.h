@@ -3,6 +3,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include "schema.h"
 #include "status.h"
 
 namespace arpp {
@@ -28,6 +29,7 @@ class Connection {
   Status execute_sql_for_each(const std::string &sql,
                               const std::function<void(const RowType &)> &fn);
   Status drop_table(const std::string &table_name);
+  Status create_table(std::shared_ptr<Schema> schema);
   Status transaction(const std::function<Status()> &t);
 
  private:
