@@ -130,7 +130,8 @@ model->destroy();
 * Mac OS X:
   * Tested on "Apple LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn)"
   * brew install sqlite3
-* Unix: no test
+* Unix:
+  * Tested on "gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3"
 
 
 # License
