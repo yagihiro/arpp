@@ -115,6 +115,11 @@ class Query {
     return std::make_shared<ProjectType>(ProjectType::Type::kWhere, q);
   }
 
+  static ProjectPtr limit(int n) {
+    auto q = fmt::format("{}", n);
+    return std::make_shared<ProjectType>(ProjectType::Type::kLimit, q);
+  }
+
  private:
   static ModelPtr _exec_single(
       const std::function<void(ModelPtr, fmt::MemoryWriter &)> &fn) {
