@@ -120,6 +120,13 @@ class Query {
     return std::make_shared<ProjectType>(ProjectType::Type::kLimit, q);
   }
 
+  static ProjectPtr order(const std::string &column, Order o) {
+    static std::string order_str[2] = {"ASC", "DESC"};
+    auto oi = static_cast<int>(o);
+    std::string cond = fmt::format("{} {}", column, order_str[oi]);
+    return std::make_shared<ProjectType>(ProjectType::Type::kOrder, cond);
+  }
+
  private:
   static ModelPtr _exec_single(
       const std::function<void(ModelPtr, fmt::MemoryWriter &)> &fn) {
