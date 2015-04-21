@@ -1,6 +1,6 @@
-#include <SQLiteCpp/SQLiteCpp.h>
+#include <arpp/arpp.h>
 #include <format.h>
-#include "connection.h"
+#include <SQLiteCpp/SQLiteCpp.h>
 
 namespace arpp {
 

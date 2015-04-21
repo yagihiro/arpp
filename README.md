@@ -110,7 +110,9 @@ delete one:
 
 ## Requirement
 
-* Mac OS X: Tested on "Apple LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn)"
+* Mac OS X:
+  * Tested on "Apple LLVM version 6.0 (clang-600.0.57) (based on LLVM 3.5svn)"
+  * brew install sqlite3
 * Unix: no test
 
 

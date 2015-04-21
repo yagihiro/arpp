@@ -1,7 +1,10 @@
 language: cpp
 
 compiler:
-- gcc
+	- gcc
 
 os:
-- linux
+	- linux
+
+script:
+	- cmake
