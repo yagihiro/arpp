@@ -4,7 +4,7 @@ Active Record library for C++11
 
 # Build Status
 
-TBD
+[![Build Status](https://travis-ci.org/yagihiro/arpp.svg?branch=master)](https://travis-ci.org/yagihiro/arpp)
 
 # Documentation
 
