@@ -4,38 +4,39 @@ namespace arpp {
 
 Schema::Property::Property() {}
 
-Schema::PropertyPtr Schema::Property::limit(int size) {
+Schema::PropertyPtr Schema::Property::set_limit(int size) {
   auto new_prop = std::make_shared<Schema::Property>(*this);
   new_prop->_limit = size;
   return new_prop;
 }
 
-Schema::PropertyPtr Schema::Property::null() {
+Schema::PropertyPtr Schema::Property::set_null() {
   auto new_prop = std::make_shared<Schema::Property>(*this);
   new_prop->_null = true;
   return new_prop;
 }
 
-Schema::PropertyPtr Schema::Property::unique() {
+Schema::PropertyPtr Schema::Property::set_unique() {
   auto new_prop = std::make_shared<Schema::Property>(*this);
   new_prop->_unique = true;
   return new_prop;
 }
 
-Schema::PropertyPtr Schema::Property::primary_key() {
+Schema::PropertyPtr Schema::Property::set_primary_key() {
   auto new_prop = std::make_shared<Schema::Property>(*this);
   new_prop->_primary_key = true;
   return new_prop;
 }
 
-Schema::PropertyPtr Schema::Property::auto_increment() {
+Schema::PropertyPtr Schema::Property::set_auto_increment() {
   auto new_prop = std::make_shared<Schema::Property>(*this);
   new_prop->_auto_increment = true;
   return new_prop;
 }
 
 Schema::Schema() {
-  auto id_prop = std::make_shared<Property>()->primary_key()->auto_increment();
+  auto id_prop =
+      std::make_shared<Property>()->set_primary_key()->set_auto_increment();
   _column_defs.emplace_back(std::make_tuple("id", Type::kInteger, id_prop));
 }
 
