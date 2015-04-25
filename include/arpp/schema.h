@@ -15,11 +15,17 @@ class Schema {
    public:
     Property();
 
-    PropertyPtr limit(int size);
-    PropertyPtr null();
-    PropertyPtr unique();
-    PropertyPtr primary_key();
-    PropertyPtr auto_increment();
+    PropertyPtr set_limit(int size);
+    PropertyPtr set_null();
+    PropertyPtr set_unique();
+    PropertyPtr set_primary_key();
+    PropertyPtr set_auto_increment();
+
+    int limit() const { return _limit; }
+    bool null() const { return _null; }
+    bool unique() const { return _unique; }
+    bool primary_key() const { return _primary_key; }
+    bool auto_increment() const { return _auto_increment; }
 
    private:
     int _limit;
