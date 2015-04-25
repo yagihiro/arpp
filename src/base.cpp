@@ -15,8 +15,6 @@ void Base::define_schema(std::shared_ptr<Schema> schema) {}
 void Base::connect(std::shared_ptr<Connection> connection) {
   _connection = connection;
 
-  _schema->define_column("id", "INTEGER PRIMARY KEY AUTOINCREMENT");
-
   // expect override
   define_schema(_schema);
 

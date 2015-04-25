@@ -8,18 +8,53 @@ namespace arpp {
 
 class Schema {
  public:
+  class Property;
+  using PropertyPtr = std::shared_ptr<Property>;
+
+  class Property {
+   public:
+    Property();
+
+    PropertyPtr limit(int size);
+    PropertyPtr null();
+    PropertyPtr unique();
+    PropertyPtr primary_key();
+    PropertyPtr auto_increment();
+
+   private:
+    int _limit;
+    bool _null;
+    bool _unique;
+    bool _primary_key;
+    bool _auto_increment;
+  };
+
   enum {
     kColumnName = 0,
     kColumnType = 1,
+    kColumnProperties = 2,
   };
 
-  // kColumnName, kColumnType
-  typedef std::tuple<std::string, std::string> ColumnType;
+  enum class Type {
+    kInteger,
+    kFloat,
+    kString,
+    kText,
+    kBinary,
+    kDateTime,
+    kDate,
+    kTime,
+    kBoolean,
+  };
+
+  // you use kColumnName, kColumnType, kColumnProperties value for access
+  // a std::get<>() template paramter
+  using ColumnType = std::tuple<std::string, Type, PropertyPtr>;
 
   Schema();
 
   void define_table_name(const std::string &name);
-  void define_column(const std::string &name, const std::string &type);
+  PropertyPtr define_column(const std::string &name, Type type);
 
   std::string table_name() const;
   int defined_column_size() const;

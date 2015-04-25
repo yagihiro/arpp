@@ -59,7 +59,7 @@ class Connection::Impl {
     schema->each_define([&](const Schema::ColumnType &def) {
       size -= 1;
       buf << " " << std::get<Schema::kColumnName>(def) << " "
-          << std::get<Schema::kColumnType>(def);
+          << column_type_to_string(std::get<Schema::kColumnType>(def));
       if (0 < size) {
         buf << ", ";
       }
@@ -82,6 +82,22 @@ class Connection::Impl {
 
  private:
   std::unique_ptr<SQLite::Database> _db;
+
+  std::string column_type_to_string(Schema::Type type) {
+    static std::map<Schema::Type, std::string> mapping = {
+        {Schema::Type::kInteger, "INTEGER"},
+        {Schema::Type::kBoolean, "INTEGER"},
+        {Schema::Type::kFloat, "REAL"},
+        {Schema::Type::kString, "TEXT"},
+        {Schema::Type::kText, "TEXT"},
+        {Schema::Type::kDateTime, "TEXT"},
+        {Schema::Type::kDate, "TEXT"},
+        {Schema::Type::kTime, "TEXT"},
+        {Schema::Type::kBinary, "BLOB"},
+    };
+
+    return mapping[type];
+  }
 };
 
 const std::string Connection::kOptionAdapter = "adapter";
