@@ -2,13 +2,49 @@
 
 namespace arpp {
 
-Schema::Schema() {}
+Schema::Property::Property() {}
+
+Schema::PropertyPtr Schema::Property::limit(int size) {
+  auto new_prop = std::make_shared<Schema::Property>(*this);
+  new_prop->_limit = size;
+  return new_prop;
+}
+
+Schema::PropertyPtr Schema::Property::null() {
+  auto new_prop = std::make_shared<Schema::Property>(*this);
+  new_prop->_null = true;
+  return new_prop;
+}
+
+Schema::PropertyPtr Schema::Property::unique() {
+  auto new_prop = std::make_shared<Schema::Property>(*this);
+  new_prop->_unique = true;
+  return new_prop;
+}
+
+Schema::PropertyPtr Schema::Property::primary_key() {
+  auto new_prop = std::make_shared<Schema::Property>(*this);
+  new_prop->_primary_key = true;
+  return new_prop;
+}
+
+Schema::PropertyPtr Schema::Property::auto_increment() {
+  auto new_prop = std::make_shared<Schema::Property>(*this);
+  new_prop->_auto_increment = true;
+  return new_prop;
+}
+
+Schema::Schema() {
+  auto id_prop = std::make_shared<Property>()->primary_key()->auto_increment();
+  _column_defs.emplace_back(std::make_tuple("id", Type::kInteger, id_prop));
+}
 
 void Schema::define_table_name(const std::string &name) { _table_name = name; }
 
-void Schema::define_column(const std::string &name, const std::string &type) {
-  auto column = std::make_tuple(name, type);
-  _column_defs.push_back(column);
+Schema::PropertyPtr Schema::define_column(const std::string &name, Type type) {
+  auto prop = std::make_shared<Property>();
+  _column_defs.emplace_back(std::make_tuple(name, type, prop));
+  return prop;
 }
 
 std::string Schema::table_name() const { return _table_name; }
