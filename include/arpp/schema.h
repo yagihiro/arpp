@@ -13,26 +13,28 @@ class Schema {
 
   class Property {
    public:
+    static const int kUndefinedLimit = -1;
+
     Property();
 
     PropertyPtr set_limit(int size);
-    PropertyPtr set_null();
+    PropertyPtr set_not_null();
     PropertyPtr set_unique();
     PropertyPtr set_primary_key();
     PropertyPtr set_auto_increment();
 
     int limit() const { return _limit; }
-    bool null() const { return _null; }
+    bool not_null() const { return _not_null; }
     bool unique() const { return _unique; }
     bool primary_key() const { return _primary_key; }
     bool auto_increment() const { return _auto_increment; }
 
    private:
-    int _limit;
-    bool _null;
-    bool _unique;
-    bool _primary_key;
-    bool _auto_increment;
+    int _limit = kUndefinedLimit;
+    bool _not_null = false;
+    bool _unique = false;
+    bool _primary_key = false;
+    bool _auto_increment = false;
   };
 
   enum {
