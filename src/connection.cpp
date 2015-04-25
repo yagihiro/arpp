@@ -58,8 +58,13 @@ class Connection::Impl {
     auto size = schema->defined_column_size();
     schema->each_define([&](const Schema::ColumnType &def) {
       size -= 1;
-      buf << " " << std::get<Schema::kColumnName>(def) << " "
+      buf << std::get<Schema::kColumnName>(def) << " "
           << column_type_to_string(std::get<Schema::kColumnType>(def));
+      auto prop =
+          column_prop_to_string(std::get<Schema::kColumnProperties>(def));
+      if (!prop.empty()) {
+        buf << " " << prop;
+      }
       if (0 < size) {
         buf << ", ";
       }
@@ -97,6 +102,34 @@ class Connection::Impl {
     };
 
     return mapping[type];
+  }
+
+  std::string column_prop_to_string(Schema::PropertyPtr prop) {
+    std::vector<std::string> results;
+    if (prop->not_null()) {
+      results.emplace_back("NOT NULL");
+    }
+    if (prop->unique()) {
+      results.emplace_back("UNIQUE");
+    }
+    if (prop->primary_key()) {
+      results.emplace_back("PRIMARY KEY");
+    }
+    if (prop->auto_increment()) {
+      results.emplace_back("AUTOINCREMENT");
+    }
+
+    fmt::MemoryWriter buf;
+    auto size = results.size();
+    for (auto &one : results) {
+      size -= 1;
+      buf << one;
+      if (0 < size) {
+        buf << " ";
+      }
+    }
+
+    return buf.str();
   }
 };
 

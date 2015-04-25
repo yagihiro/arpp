@@ -10,9 +10,9 @@ Schema::PropertyPtr Schema::Property::set_limit(int size) {
   return new_prop;
 }
 
-Schema::PropertyPtr Schema::Property::set_null() {
+Schema::PropertyPtr Schema::Property::set_not_null() {
   auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_null = true;
+  new_prop->_not_null = true;
   return new_prop;
 }
 
