@@ -95,9 +95,9 @@ class Connection::Impl {
         {Schema::Type::kFloat, "REAL"},
         {Schema::Type::kString, "TEXT"},
         {Schema::Type::kText, "TEXT"},
-        {Schema::Type::kDateTime, "TEXT"},
-        {Schema::Type::kDate, "TEXT"},
-        {Schema::Type::kTime, "TEXT"},
+        {Schema::Type::kDateTime, "NUMERIC"},
+        {Schema::Type::kDate, "NUMERIC"},
+        {Schema::Type::kTime, "NUMERIC"},
         {Schema::Type::kBinary, "BLOB"},
     };
 
