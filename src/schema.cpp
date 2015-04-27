@@ -46,6 +46,11 @@ void Schema::define_column(const std::string &name, Type type,
   }
 }
 
+void Schema::define_timestamps() {
+  define_column("created_at", Type::kDateTime);
+  define_column("updated_at", Type::kDateTime);
+}
+
 std::string Schema::table_name() const { return _table_name; }
 
 int Schema::defined_column_size() const {

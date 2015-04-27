@@ -64,6 +64,7 @@ class Schema {
   void define_table_name(const std::string &name);
   void define_column(const std::string &name, Type type,
                      const std::function<void(PropertyPtr)> &fn = nullptr);
+  void define_timestamps();
 
   std::string table_name() const;
   int defined_column_size() const;
