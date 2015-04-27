@@ -17,11 +17,11 @@ class Schema {
 
     Property();
 
-    PropertyPtr set_limit(int size);
-    PropertyPtr set_not_null();
-    PropertyPtr set_unique();
-    PropertyPtr set_primary_key();
-    PropertyPtr set_auto_increment();
+    Property &set_limit(int size);
+    Property &set_not_null();
+    Property &set_unique();
+    Property &set_primary_key();
+    Property &set_auto_increment();
 
     int limit() const { return _limit; }
     bool not_null() const { return _not_null; }
@@ -62,7 +62,8 @@ class Schema {
   Schema();
 
   void define_table_name(const std::string &name);
-  PropertyPtr define_column(const std::string &name, Type type);
+  void define_column(const std::string &name, Type type,
+                     const std::function<void(PropertyPtr)> &fn = nullptr);
 
   std::string table_name() const;
   int defined_column_size() const;

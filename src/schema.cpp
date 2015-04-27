@@ -4,51 +4,50 @@ namespace arpp {
 
 Schema::Property::Property() {}
 
-Schema::PropertyPtr Schema::Property::set_limit(int size) {
-  auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_limit = size;
-  return new_prop;
+Schema::Property &Schema::Property::set_limit(int size) {
+  _limit = size;
+  return *this;
 }
 
-Schema::PropertyPtr Schema::Property::set_not_null() {
-  auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_not_null = true;
-  return new_prop;
+Schema::Property &Schema::Property::set_not_null() {
+  _not_null = true;
+  return *this;
 }
 
-Schema::PropertyPtr Schema::Property::set_unique() {
-  auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_unique = true;
-  return new_prop;
+Schema::Property &Schema::Property::set_unique() {
+  _unique = true;
+  return *this;
 }
 
-Schema::PropertyPtr Schema::Property::set_primary_key() {
-  auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_primary_key = true;
-  return new_prop;
+Schema::Property &Schema::Property::set_primary_key() {
+  _primary_key = true;
+  return *this;
 }
 
-Schema::PropertyPtr Schema::Property::set_auto_increment() {
-  auto new_prop = std::make_shared<Schema::Property>(*this);
-  new_prop->_auto_increment = true;
-  return new_prop;
+Schema::Property &Schema::Property::set_auto_increment() {
+  _auto_increment = true;
+  return *this;
 }
 
 Schema::Schema() {
-  auto id_prop =
-      std::make_shared<Property>()->set_primary_key()->set_auto_increment();
-  _column_defs.emplace_back(std::make_tuple("id", Type::kInteger, id_prop));
+  define_column("id", Type::kInteger, [&](PropertyPtr prop) {
+    prop->set_primary_key().set_auto_increment();
+  });
 }
 
 void Schema::define_table_name(const std::string &name) { _table_name = name; }
 
-Schema::PropertyPtr Schema::define_column(const std::string &name, Type type) {
+void Schema::define_column(const std::string &name, Type type,
+                           const std::function<void(PropertyPtr)> &fn) {
   auto prop = std::make_shared<Property>();
   _column_defs.emplace_back(std::make_tuple(name, type, prop));
-  return prop;
+  if (fn) {
+    fn(prop);
+  }
 }
 
 std::string Schema::table_name() const { return _table_name; }
+
 int Schema::defined_column_size() const {
   return static_cast<int>(_column_defs.size());
 }
