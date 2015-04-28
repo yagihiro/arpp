@@ -104,6 +104,21 @@ Status Base::destroy() {
   return Status::ok();
 }
 
+std::string Base::to_json() const {
+  fmt::MemoryWriter w;
+
+  auto size = _fields.size();
+  for (auto &one : _fields) {
+    size -= 1;
+    w << "'" << one.first << "':'" << one.second << "'";
+    if (0 < size) {
+      w << ",";
+    }
+  }
+
+  return std::move(w.str());
+}
+
 void Base::setup_fields() {
   _schema->each_column([&](const std::string &column_name) {
     _fields.emplace(std::make_pair(column_name, ""));
