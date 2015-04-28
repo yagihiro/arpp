@@ -121,10 +121,14 @@ class Query {
   }
 
   static ProjectPtr order(const std::string &column, Order o) {
-    static std::string order_str[2] = {"ASC", "DESC"};
-    auto oi = static_cast<int>(o);
-    std::string cond = fmt::format("{} {}", column, order_str[oi]);
-    return std::make_shared<ProjectType>(ProjectType::Type::kOrder, cond);
+    fmt::MemoryWriter w;
+    w << column << " ";
+    if (o == Order::kAsc) {
+      w << "ASC";
+    } else {
+      w << "DESC";
+    }
+    return std::make_shared<ProjectType>(ProjectType::Type::kOrder, w.str());
   }
 
  private:

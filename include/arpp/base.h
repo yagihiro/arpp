@@ -40,6 +40,8 @@ class Base {
   Status save();
   Status destroy();
 
+  std::string to_json() const;
+
  private:
   std::shared_ptr<Schema> _schema;
   std::map<std::string, std::string> _fields;
