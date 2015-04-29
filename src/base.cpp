@@ -28,6 +28,8 @@ Status Base::save() {
     return Status::status_ailment();
   }
 
+  before_save();
+
   fmt::MemoryWriter buf;
 
   if (_new_record) {
@@ -61,6 +63,8 @@ Status Base::save() {
     }
 
     buf << ");";
+
+    before_create();
   } else {
     buf << "UPDATE " << table_name() << " SET ";
 
@@ -77,9 +81,19 @@ Status Base::save() {
     }
 
     buf << " WHERE id = " << _fields["id"];
+
+    before_update();
   }
 
   _connection->execute_sql(buf.str());
+
+  if (_new_record) {
+    after_create();
+  } else {
+    after_update();
+  }
+
+  after_save();
 
   return Status::ok();
 }
@@ -103,6 +117,18 @@ Status Base::destroy() {
 
   return Status::ok();
 }
+
+void Base::before_save() {}
+
+void Base::after_save() {}
+
+void Base::before_create() {}
+
+void Base::after_create() {}
+
+void Base::before_update() {}
+
+void Base::after_update() {}
 
 std::string Base::to_json() const {
   fmt::MemoryWriter w;
