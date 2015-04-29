@@ -40,6 +40,19 @@ class Base {
   Status save();
   Status destroy();
 
+  // callback on INSERT and UPDATE
+  virtual void before_save();
+  // callback on INSERT and UPDATE
+  virtual void after_save();
+  // callback on INSERT
+  virtual void before_create();
+  // callback on INSERT
+  virtual void after_create();
+  // callback on UPDATE
+  virtual void before_update();
+  // callback on UPDATE
+  virtual void after_update();
+
   std::string to_json() const;
 
  private:
