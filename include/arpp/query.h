@@ -49,7 +49,7 @@ class Project {
     c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
       auto m = Model<T>::create();
       for (auto one : row) {
-        m->set_field(one);
+        m->_set_field(one);
       }
       m->loaded();
       models.emplace_back(m);
@@ -146,7 +146,7 @@ class Query {
     auto c = Connection::shared_connection();
     c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
       for (auto one : row) {
-        m->set_field(one);
+        m->_set_field(one);
       }
     });
 
