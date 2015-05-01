@@ -142,7 +142,7 @@ std::string Base::to_json() const {
   auto size = _fields.size();
   for (auto &one : _fields) {
     size -= 1;
-    w << "'" << one.first << "':'" << one.second << "'";
+    w << "\"" << one.first << "\":\"" << one.second << "\"";
     if (0 < size) {
       w << ",";
     }
