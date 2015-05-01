@@ -1,5 +1,6 @@
 #pragma once
 
+#include <limits>
 #include <map>
 #include <memory>
 #include <string>
@@ -31,6 +32,8 @@ class Connection {
   Status drop_table(const std::string &table_name);
   Status create_table(std::shared_ptr<Schema> schema);
   Status transaction(const std::function<Status()> &t);
+
+  int64_t last_row_id() const;
 
  private:
   void set_options(const std::map<std::string, std::string> &options);

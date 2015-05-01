@@ -62,5 +62,8 @@ class Base {
   bool _new_record = true;
 
   void setup_fields();
+  void set_created_at();
+  void set_updated_at();
+  std::string now_string() const;
 };
 }

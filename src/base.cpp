@@ -1,4 +1,5 @@
 #include <arpp/arpp.h>
+#include <ctime>
 #include <format.h>
 
 namespace arpp {
@@ -29,10 +30,14 @@ Status Base::save() {
   }
 
   before_save();
+  set_updated_at();
 
   fmt::MemoryWriter buf;
 
   if (_new_record) {
+    before_create();
+    set_created_at();
+
     buf << "INSERT INTO " << table_name() << " (";
 
     std::vector<std::tuple<std::string, std::string> > values;
@@ -63,9 +68,9 @@ Status Base::save() {
     }
 
     buf << ");";
-
-    before_create();
   } else {
+    before_update();
+
     buf << "UPDATE " << table_name() << " SET ";
 
     auto size = _fields.size();
@@ -81,13 +86,13 @@ Status Base::save() {
     }
 
     buf << " WHERE id = " << _fields["id"];
-
-    before_update();
   }
 
   _connection->execute_sql(buf.str());
 
   if (_new_record) {
+    auto id = _connection->last_row_id();
+    set_field("id", fmt::format("{0}", id));
     after_create();
   } else {
     after_update();
@@ -133,6 +138,7 @@ void Base::after_update() {}
 std::string Base::to_json() const {
   fmt::MemoryWriter w;
 
+  w << "{";
   auto size = _fields.size();
   for (auto &one : _fields) {
     size -= 1;
@@ -141,6 +147,7 @@ std::string Base::to_json() const {
       w << ",";
     }
   }
+  w << "}";
 
   return std::move(w.str());
 }
@@ -149,5 +156,22 @@ void Base::setup_fields() {
   _schema->each_column([&](const std::string &column_name) {
     _fields.emplace(std::make_pair(column_name, ""));
   });
+}
+
+void Base::set_created_at() {
+  set_field("created_at", fmt::format("{0}", now_string()));
+}
+
+void Base::set_updated_at() {
+  set_field("updated_at", fmt::format("{0}", now_string()));
+}
+
+std::string Base::now_string() const {
+  auto now = std::time(nullptr);
+  auto tm = gmtime(&now);
+  char buf[sizeof("2000-01-01T00:00:00Z")];
+  std::strftime(buf, sizeof(buf), "%FT%TZ", tm);
+
+  return buf;
 }
 }
