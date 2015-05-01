@@ -85,6 +85,8 @@ class Connection::Impl {
     return Status::ok();
   }
 
+  int64_t last_row_id() const { return _db->getLastInsertRowid(); }
+
  private:
   std::unique_ptr<SQLite::Database> _db;
 
@@ -186,6 +188,8 @@ Status Connection::create_table(std::shared_ptr<Schema> schema) {
 Status Connection::transaction(const std::function<Status()> &t) {
   return _impl->transaction(t);
 }
+
+int64_t Connection::last_row_id() const { return _impl->last_row_id(); }
 
 void Connection::set_options(
     const std::map<std::string, std::string> &options) {
