@@ -3,6 +3,7 @@
 #include <memory>
 #include <string>
 #include "connection.h"
+#include "query.h"
 #include "schema.h"
 #include "status.h"
 
@@ -26,12 +27,8 @@ class Base {
   const std::string &get_field(const std::string &key) const {
     return _fields.at(key);
   }
-  void set_field(const std::string &key, const std::string &value) {
-    _fields[key] = value;
-  }
-  void set_field(const std::pair<std::string, std::string> &pair) {
-    set_field(pair.first, pair.second);
-  }
+  Status set_field(const std::string &key, const std::string &value);
+  Status set_field(const std::pair<std::string, std::string> &pair);
 
   void connect(std::shared_ptr<Connection> connection);
 
@@ -56,14 +53,23 @@ class Base {
   std::string to_json() const;
 
  private:
+  template <typename T>
+  friend class Project;
+
+  template <typename T>
+  friend class Query;
+
   std::shared_ptr<Schema> _schema;
   std::map<std::string, std::string> _fields;
   std::shared_ptr<Connection> _connection;
   bool _new_record = true;
+  std::vector<std::string> _dirty_keys;
 
   void setup_fields();
   void set_created_at();
   void set_updated_at();
   std::string now_string() const;
+  void _set_field(const std::string &key, const std::string &value);
+  void _set_field(const std::pair<std::string, std::string> &pair);
 };
 }

@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <arpp/arpp.h>
 #include <ctime>
 #include <format.h>
@@ -12,6 +13,24 @@ std::string Base::table_name() const { return _schema->table_name(); }
 void Base::migrate(std::shared_ptr<Connection> connection,
                    std::shared_ptr<Schema> schema) {}
 void Base::define_schema(std::shared_ptr<Schema> schema) {}
+
+Status Base::set_field(const std::string &key, const std::string &value) {
+  static std::vector<std::string> _ikeys = {"id", "created_at", "updated_at"};
+
+  auto result = std::any_of(_ikeys.begin(), _ikeys.end(),
+                            [&](const std::string &k) { return k == key; });
+  if (result) {
+    return Status::invalid_argument();
+  }
+
+  _set_field(key, value);
+
+  return Status::ok();
+}
+
+Status Base::set_field(const std::pair<std::string, std::string> &pair) {
+  return set_field(pair.first, pair.second);
+}
 
 void Base::connect(std::shared_ptr<Connection> connection) {
   _connection = connection;
@@ -73,13 +92,11 @@ Status Base::save() {
 
     buf << "UPDATE " << table_name() << " SET ";
 
-    auto size = _fields.size();
-    for (auto &one : _fields) {
+    auto size = _dirty_keys.size();
+    for (auto &key : _dirty_keys) {
       size -= 1;
 
-      if (one.first == "id") continue;
-
-      buf << one.first << " = '" << one.second << "'";
+      buf << key << " = '" << _fields[key] << "'";
       if (0 < size) {
         buf << ", ";
       }
@@ -92,7 +109,7 @@ Status Base::save() {
 
   if (_new_record) {
     auto id = _connection->last_row_id();
-    set_field("id", fmt::format("{0}", id));
+    _set_field("id", fmt::format("{0}", id));
     after_create();
   } else {
     after_update();
@@ -159,11 +176,11 @@ void Base::setup_fields() {
 }
 
 void Base::set_created_at() {
-  set_field("created_at", fmt::format("{0}", now_string()));
+  _set_field("created_at", fmt::format("{0}", now_string()));
 }
 
 void Base::set_updated_at() {
-  set_field("updated_at", fmt::format("{0}", now_string()));
+  _set_field("updated_at", fmt::format("{0}", now_string()));
 }
 
 std::string Base::now_string() const {
@@ -173,5 +190,17 @@ std::string Base::now_string() const {
   std::strftime(buf, sizeof(buf), "%FT%TZ", tm);
 
   return buf;
+}
+
+void Base::_set_field(const std::string &key, const std::string &value) {
+  _fields[key] = value;
+
+  if (!_new_record) {
+    _dirty_keys.emplace_back(key);
+  }
+}
+
+void Base::_set_field(const std::pair<std::string, std::string> &pair) {
+  _set_field(pair.first, pair.second);
 }
 }
