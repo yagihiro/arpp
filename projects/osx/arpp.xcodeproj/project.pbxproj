@@ -23,8 +23,19 @@
 		9BD6F1661AD6463C005FA860 /* migration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6F1651AD6463C005FA860 /* migration.cpp */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9B2850011AFBD2AF009324B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B284FFD1AFBD2AF009324B1 /* arpp.test.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9B284FED1AFBD26D009324B1;
+			remoteInfo = arpp.test;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		9B23524A1AD44A6000840266 /* base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
+		9B284FFD1AFBD2AF009324B1 /* arpp.test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = arpp.test.xcodeproj; sourceTree = "<group>"; };
 		9B6645581AD4055D00207303 /* libarpp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libarpp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B6645631AD4083900207303 /* libSQLiteCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSQLiteCpp.a; path = ../../vendor/SQLiteCpp/build/libSQLiteCpp.a; sourceTree = "<group>"; };
 		9B6645671AD4089B00207303 /* connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
@@ -55,9 +66,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B284FFE1AFBD2AF009324B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B2850021AFBD2AF009324B1 /* arpp.test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9B66454F1AD4055C00207303 = {
 			isa = PBXGroup;
 			children = (
+				9B284FFD1AFBD2AF009324B1 /* arpp.test.xcodeproj */,
 				9B6645651AD4089B00207303 /* include */,
 				9B6645691AD408A500207303 /* src */,
 				9B6645601AD406E500207303 /* vendor */,
@@ -206,12 +226,28 @@
 			mainGroup = 9B66454F1AD4055C00207303;
 			productRefGroup = 9B6645591AD4055D00207303 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9B284FFE1AFBD2AF009324B1 /* Products */;
+					ProjectRef = 9B284FFD1AFBD2AF009324B1 /* arpp.test.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9B6645571AD4055D00207303 /* arpp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9B2850021AFBD2AF009324B1 /* arpp.test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = arpp.test;
+			remoteRef = 9B2850011AFBD2AF009324B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		9B66455F1AD406B800207303 /* ShellScript */ = {
