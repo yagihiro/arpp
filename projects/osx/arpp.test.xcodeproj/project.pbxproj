@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B2850071AFBD2F7009324B1 /* build.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9B2850051AFBD2F7009324B1 /* build.cpp */; };
+		9B2850091AFBD530009324B1 /* libarpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2850081AFBD530009324B1 /* libarpp.a */; };
+		9B28500E1AFBD5C5009324B1 /* libSQLiteCpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B28500D1AFBD5C5009324B1 /* libSQLiteCpp.a */; };
+		9B2850171AFBD67C009324B1 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2850161AFBD67C009324B1 /* libssl.dylib */; };
+		9B2850191AFBD685009324B1 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2850181AFBD685009324B1 /* libcrypto.dylib */; };
+		9B28501B1AFBD691009324B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B28501A1AFBD691009324B1 /* libsqlite3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9B284FEB1AFBD26D009324B1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9B284FED1AFBD26D009324B1 /* arpp.test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = arpp.test; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B2850051AFBD2F7009324B1 /* build.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = build.cpp; sourceTree = "<group>"; };
+		9B2850081AFBD530009324B1 /* libarpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libarpp.a; path = "../../../../../../Library/Developer/Xcode/DerivedData/Gummy-gwovecjopqrzzmbkqbuilehzgunb/Build/Products/Debug/libarpp.a"; sourceTree = "<group>"; };
+		9B28500D1AFBD5C5009324B1 /* libSQLiteCpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSQLiteCpp.a; path = ../../vendor/SQLiteCpp/build/libSQLiteCpp.a; sourceTree = "<group>"; };
+		9B2850161AFBD67C009324B1 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/local/Cellar/openssl/1.0.2a/lib/libssl.dylib; sourceTree = "<absolute>"; };
+		9B2850181AFBD685009324B1 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/local/Cellar/openssl/1.0.2a/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
+		9B28501A1AFBD691009324B1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = "/Users/hiroki-yagita/r/Gummy/projects/osx/../../../../../../usr/local/Cellar/sqlite/3.8.8.3/lib/libsqlite3.dylib"; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B284FEA1AFBD26D009324B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B28500E1AFBD5C5009324B1 /* libSQLiteCpp.a in Frameworks */,
+				9B2850191AFBD685009324B1 /* libcrypto.dylib in Frameworks */,
+				9B2850091AFBD530009324B1 /* libarpp.a in Frameworks */,
+				9B28501B1AFBD691009324B1 /* libsqlite3.dylib in Frameworks */,
+				9B2850171AFBD67C009324B1 /* libssl.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B284FE41AFBD26D009324B1 = {
+			isa = PBXGroup;
+			children = (
+				9B2850081AFBD530009324B1 /* libarpp.a */,
+				9B284FEE1AFBD26D009324B1 /* Products */,
+				9B28500F1AFBD610009324B1 /* system */,
+				9B2850041AFBD2F7009324B1 /* test */,
+				9B28500A1AFBD58A009324B1 /* vendor */,
+			);
+			sourceTree = "<group>";
+		};
+		9B284FEE1AFBD26D009324B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B284FED1AFBD26D009324B1 /* arpp.test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B2850041AFBD2F7009324B1 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				9B2850051AFBD2F7009324B1 /* build.cpp */,
+			);
+			name = test;
+			path = ../../test;
+			sourceTree = "<group>";
+		};
+		9B28500A1AFBD58A009324B1 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				9B28500B1AFBD598009324B1 /* SQLiteCpp */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		9B28500B1AFBD598009324B1 /* SQLiteCpp */ = {
+			isa = PBXGroup;
+			children = (
+				9B28500C1AFBD5A2009324B1 /* build */,
+			);
+			name = SQLiteCpp;
+			sourceTree = "<group>";
+		};
+		9B28500C1AFBD5A2009324B1 /* build */ = {
+			isa = PBXGroup;
+			children = (
+				9B28500D1AFBD5C5009324B1 /* libSQLiteCpp.a */,
+			);
+			name = build;
+			sourceTree = "<group>";
+		};
+		9B28500F1AFBD610009324B1 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				9B2850181AFBD685009324B1 /* libcrypto.dylib */,
+				9B28501A1AFBD691009324B1 /* libsqlite3.dylib */,
+				9B2850161AFBD67C009324B1 /* libssl.dylib */,
+			);
+			name = system;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B284FEC1AFBD26D009324B1 /* arpp.test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B284FF41AFBD26D009324B1 /* Build configuration list for PBXNativeTarget "arpp.test" */;
+			buildPhases = (
+				9B284FE91AFBD26D009324B1 /* Sources */,
+				9B284FEA1AFBD26D009324B1 /* Frameworks */,
+				9B284FEB1AFBD26D009324B1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = arpp.test;
+			productName = arpp.test;
+			productReference = 9B284FED1AFBD26D009324B1 /* arpp.test */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B284FE51AFBD26D009324B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = yagihiro.net;
+				TargetAttributes = {
+					9B284FEC1AFBD26D009324B1 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 9B284FE81AFBD26D009324B1 /* Build configuration list for PBXProject "arpp.test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9B284FE41AFBD26D009324B1;
+			productRefGroup = 9B284FEE1AFBD26D009324B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B284FEC1AFBD26D009324B1 /* arpp.test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B284FE91AFBD26D009324B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B2850071AFBD2F7009324B1 /* build.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9B284FF21AFBD26D009324B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+					../../vendor/SQLiteCpp/include,
+					../../vendor/cppformat,
+					../../vendor/Catch/include,
+					../../include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					../../vendor/SQLiteCpp/build,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9B284FF31AFBD26D009324B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+					../../vendor/SQLiteCpp/include,
+					../../vendor/cppformat,
+					../../vendor/Catch/include,
+					../../include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					../../vendor/SQLiteCpp/build,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9B284FF51AFBD26D009324B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Gummy-gwovecjopqrzzmbkqbuilehzgunb/Build/Products/Debug",
+					"/Users/hiroki-yagita/r/Gummy/vendor/arpp/vendor/SQLiteCpp/build",
+					/usr/local/Cellar/openssl/1.0.2a/lib,
+					"/Users/hiroki-yagita/r/Gummy/projects/osx/../../../../../../usr/local/Cellar/sqlite/3.8.8.3/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9B284FF61AFBD26D009324B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Gummy-gwovecjopqrzzmbkqbuilehzgunb/Build/Products/Debug",
+					"/Users/hiroki-yagita/r/Gummy/vendor/arpp/vendor/SQLiteCpp/build",
+					/usr/local/Cellar/openssl/1.0.2a/lib,
+					"/Users/hiroki-yagita/r/Gummy/projects/osx/../../../../../../usr/local/Cellar/sqlite/3.8.8.3/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B284FE81AFBD26D009324B1 /* Build configuration list for PBXProject "arpp.test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B284FF21AFBD26D009324B1 /* Debug */,
+				9B284FF31AFBD26D009324B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B284FF41AFBD26D009324B1 /* Build configuration list for PBXNativeTarget "arpp.test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B284FF51AFBD26D009324B1 /* Debug */,
+				9B284FF61AFBD26D009324B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B284FE51AFBD26D009324B1 /* Project object */;
+}
