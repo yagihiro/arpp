@@ -30,8 +30,10 @@ class Connection::Impl {
 
     fmt::print("SQL: {}\n", sql);
 
+    bool loaded = false;
     SQLite::Statement query(*_db, sql);
     while (query.executeStep()) {
+      loaded = true;
       Connection::RowType row;
       auto count = query.getColumnCount();
       for (int i = 0; i < count; i++) {
@@ -43,7 +45,7 @@ class Connection::Impl {
       fn(row);
     }
 
-    return Status::ok();
+    return (loaded) ? Status::ok() : Status::not_found();
   }
 
   Status drop_table(const std::string &table_name) {

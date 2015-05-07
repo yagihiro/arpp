@@ -89,18 +89,30 @@ class Query {
   using ProjectType = Project<T>;
   using ProjectPtr = std::shared_ptr<ProjectType>;
 
+  /**
+   * @return the nullptr if a record does not found, otherwise an arpp::Base
+   * object
+   */
   static ModelPtr first() {
     return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
       mw << "SELECT * FROM " << m->table_name() << " ORDER BY id ASC LIMIT 1;";
     });
   }
 
+  /**
+   * @return the nullptr if a record does not found, otherwise an arpp::Base
+   * object
+   */
   static ModelPtr last() {
     return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
       mw << "SELECT * FROM " << m->table_name() << " ORDER BY id DESC LIMIT 1;";
     });
   }
 
+  /**
+   * @return the nullptr if a record does not found, otherwise an arpp::Base
+   * object
+   */
   static ModelPtr find(int id) {
     return _exec_single([&](ModelPtr m, fmt::MemoryWriter &mw) {
       mw << "SELECT * FROM " << m->table_name() << " WHERE id = " << id
@@ -144,11 +156,16 @@ class Query {
     fn(m, buf);
 
     auto c = Connection::shared_connection();
-    c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
-      for (auto one : row) {
-        m->_set_field(one);
-      }
-    });
+    auto status =
+        c->execute_sql_for_each(buf.str(), [&](const Connection::RowType &row) {
+          for (auto one : row) {
+            m->_set_field(one);
+          }
+        });
+
+    if (status.is_not_found()) {
+      return nullptr;
+    }
 
     m->loaded();
 
