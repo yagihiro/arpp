@@ -7,8 +7,11 @@ include_directories(
 	../vendor/cppformat
 	../vendor/SQLiteCpp/include
 )
+
+find_package (Threads)
+
 add_executable(testrunner
   build.cpp
   connection-test.cpp
 )
-target_link_libraries(testrunner arpp format SQLiteCpp sqlite3)
+target_link_libraries(testrunner arpp format SQLiteCpp sqlite3 ${CMAKE_THREAD_LIBS_INIT})

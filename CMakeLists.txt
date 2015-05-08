@@ -6,6 +6,9 @@ include_directories(
 	vendor/cppformat
 	vendor/SQLiteCpp/include
 )
+
+find_package (Threads)
+
 add_subdirectory(src)
 add_subdirectory(vendor/cppformat)
 add_subdirectory(vendor/SQLiteCpp)
