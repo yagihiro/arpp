@@ -8,3 +8,5 @@ os:
 
 script:
   - cmake .
+  - make
+  - ./test/testrunner
