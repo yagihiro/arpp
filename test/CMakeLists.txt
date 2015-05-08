@@ -9,5 +9,6 @@ include_directories(
 )
 add_executable(testrunner
   build.cpp
+  connection-test.cpp
 )
 target_link_libraries(testrunner arpp format SQLiteCpp sqlite3)
