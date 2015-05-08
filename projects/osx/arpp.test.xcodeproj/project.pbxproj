@@ -13,6 +13,7 @@
 		9B2850171AFBD67C009324B1 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2850161AFBD67C009324B1 /* libssl.dylib */; };
 		9B2850191AFBD685009324B1 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B2850181AFBD685009324B1 /* libcrypto.dylib */; };
 		9B28501B1AFBD691009324B1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B28501A1AFBD691009324B1 /* libsqlite3.dylib */; };
+		9BE548861AFD171900719E22 /* connection-test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BE548851AFD171900719E22 /* connection-test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		9B2850161AFBD67C009324B1 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = /usr/local/Cellar/openssl/1.0.2a/lib/libssl.dylib; sourceTree = "<absolute>"; };
 		9B2850181AFBD685009324B1 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/local/Cellar/openssl/1.0.2a/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		9B28501A1AFBD691009324B1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = "/Users/hiroki-yagita/r/Gummy/projects/osx/../../../../../../usr/local/Cellar/sqlite/3.8.8.3/lib/libsqlite3.dylib"; sourceTree = "<absolute>"; };
+		9BE548851AFD171900719E22 /* connection-test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "connection-test.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				9B2850051AFBD2F7009324B1 /* build.cpp */,
+				9BE548851AFD171900719E22 /* connection-test.cpp */,
 			);
 			name = test;
 			path = ../../test;
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B2850071AFBD2F7009324B1 /* build.cpp in Sources */,
+				9BE548861AFD171900719E22 /* connection-test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
