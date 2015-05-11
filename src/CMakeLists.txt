@@ -8,6 +8,7 @@ include_directories(
 )
 add_library(arpp STATIC
 	base.cpp
+  connection_bundle.cpp
   connection.cpp
 	migration.cpp
 	schema.cpp
